@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('duration');
             $table->integer('price');
             $table->string('discount');
-            $table->string('what_you_wil_learn');
+            $table->string('what_you_will_learn');
             $table->json('training_program');
             $table->string('discount_duraion');
             $table->foreignId('teacher_id')->references('id')->on('teachers');
