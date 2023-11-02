@@ -24,7 +24,7 @@ class CourseResource extends JsonResource
           'training_program' => $this->training_program,
           'discount_duration' => $this->discount_duration,
           'teachers' => TeacherResource::collection($this->teachers),
-          'projects' => ProjetcResource::collection($this->projects),
+          'projects' => ProjectResource::collection($this->projects),
           'programmes' => ProgramResource::collection($this->programmes) ,
         ];
     }
