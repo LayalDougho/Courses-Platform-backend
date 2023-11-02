@@ -12,7 +12,7 @@ class Teacher extends Model
     protected $fillable = ['first_name', 'last_name', 'email', 'image', 'specialization'];
 
 
-    public function courses()
+    public function courses(): HasMany
     {
         return $this->hasMany(Course::class, 'teacher_id');
     }
