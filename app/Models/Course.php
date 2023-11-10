@@ -13,9 +13,9 @@ class Course extends Model
     use HasFactory;
     protected $fillable = ['title', 'description', 'duration', 'price', 'discount', 'what_you_will_learn', 'training_program' , 'discount_duration' ,'teacher_id'];
 
-    public function teacher(): BelongsTo
+    public function teachers(): HasMany
     {
-        return $this->belongsTo(Teacher::class, 'teacher_id');
+        return $this->hasMany(Teacher::class, 'teacher_id');
     }
 
     public function projects(): HasMany
@@ -24,8 +24,8 @@ class Course extends Model
     }
 
 
-    public function programs()
-{
+    public function programmes(): BelongsToMany
+    {
     return $this->belongsToMany(Program::class, 'course_id', 'program_id');
 }
 
