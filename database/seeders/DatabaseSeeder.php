@@ -1,13 +1,9 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\Program;
-use App\Models\Tag;
-use App\Models\Teacher;
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\CourseProgram;
+use App\Models\PostTags;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,7 +24,12 @@ class DatabaseSeeder extends Seeder
         $this->call(TagSeeder::class);
         $this->call(TeacherSeeder::class);
         $this->call(ProgramSeeder::class);
-        $this->call(CouresSeeder::class);
+        $this->call(CourseSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(ProjectSeeder::class);
+
+        PostTags::factory(5)->create();
+        CourseProgram::factory(25)->create();
+
     }
 }

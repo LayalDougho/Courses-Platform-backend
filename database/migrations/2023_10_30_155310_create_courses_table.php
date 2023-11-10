@@ -17,11 +17,11 @@ return new class extends Migration
             $table->longText('description');
             $table->string('duration');
             $table->integer('price');
-            $table->string('discount');
+            $table->tinyInteger('discount');
             $table->string('what_you_will_learn');
             $table->json('course_content');
             $table->json('training_program');
-            $table->string('discount_duraion');
+            $table->dateTime('discount_duration');
             $table->foreignId('teacher_id')->references('id')->on('teachers');
             $table->timestamps();
         });
