@@ -15,7 +15,16 @@ class TeacherController extends Controller
 
         return $this->successResponse(data: TeacherResource::collection($teachers));
     }
-
+    
+    public function teacher($id): JsonResponse
+    {
+        $teachers = Teacher::with('courses')->find($id);
+        if($teachers!=null){
+            return $this->successResponse(data: $teachers);
+        }else{
+            return $this->failedResponse(message:'No teacher founded');
+        }
+    }
     public function show(Teacher $teacher): JsonResponse
     {
         return $this->successResponse(data: TeacherResource::make($teacher));

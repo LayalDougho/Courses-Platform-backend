@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('duration');
             $table->integer('price');
             $table->string('discount');
-            $table->string('what_you_will_learn');
+            $table->json('what_you_will_learn');
             $table->json('course_content');
             $table->json('training_program');
             $table->string('discount_duraion');
