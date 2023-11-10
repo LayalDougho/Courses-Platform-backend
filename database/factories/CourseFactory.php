@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Discount;
 use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,9 +24,7 @@ class CourseFactory extends Factory
               'description' => $this->faker->paragraph(2),
               'duration' => $this->faker->sentence(),
               'price' => $this->faker->randomNumber(),
-              'discount' => $this->faker->numberBetween(0 , 100) ,
-              'what_you_will_learn' => $this->faker->sentence() ,
-              'discount_duration' => $this->faker->dateTime(),
+              'what_you_will_learn' => $this->faker->text() ,
               'course_content' => json_encode ([
                   $this->faker->sentence(),
                   $this->faker->sentence(),
@@ -38,6 +37,7 @@ class CourseFactory extends Factory
                   $this->faker->word() => $this->faker->sentence(),
               ] ),
               'teacher_id' => Teacher::factory(),
+              'discount_id' => Discount::factory()
         ];
     }
 }

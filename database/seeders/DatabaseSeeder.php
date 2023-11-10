@@ -8,7 +8,9 @@ namespace Database\Seeders;
 //=======
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\CourseProgram;
 use App\Models\Post;
+use App\Models\PostTags;
 use App\Models\Program;
 use App\Models\Tag;
 use App\Models\Teacher;
