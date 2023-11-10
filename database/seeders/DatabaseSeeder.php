@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use App\Models\Category;
+use App\Models\Course;
 use App\Models\Post;
 use App\Models\Program;
 use App\Models\Tag;
@@ -23,6 +24,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Course::factory(10)->create();
+
         $this->call(CategorySeeder::class);
         $this->call(PostSeeder::class);
         $this->call(TagSeeder::class);

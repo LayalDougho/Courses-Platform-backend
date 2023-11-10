@@ -23,9 +23,10 @@ class CourseResource extends JsonResource
           'what_you_will_learn' => $this->what_you_will_learn,
           'training_program' => $this->training_program,
           'discount_duration' => $this->discount_duration,
-          'teachers' => TeacherResource::collection($this->teachers),
-          'projects' => ProjectResource::collection($this->projects),
-          'programmes' => ProgramResource::collection($this->programmes) ,
+
+          'teachers' => $this->whenLoaded('teachers' , fn() => TeacherResource::collection($this->teachers)) ,
+          'projects' => $this->whenLoaded('projects' , fn() => ProjectResource::collection($this->projects)) ,
+          'programmes' => $this->whenLoaded('teachers' , fn() => ProgramResource::collection($this->programmes))  ,
         ];
     }
 }

@@ -21,18 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-///Home Page 
-Route::get('/generaldiscount',[HomeController::class, 'generaldiscount']);
-Route::get('/allprograms',[HomeController::class,'allprograms']);
-Route::get('/program/{id}',[HomeController::class,'program']);
-Route::get('/allteachers',[TeacherController::class,'index']);
-Route::get('/teacher/{id}',[TeacherController::class,'teacher']);
-Route::get('allcourses',[CourseController::class, 'index']);
-//Course Page
-Route::get('/course/{id}',[CourseController::class, 'show']);
-Route::get('/course_content/{id}',[CourseController::class, 'content']);
-Route::get('/allprojects',[CourseController::class, 'allprojects']);
-Route::get('/course_training/{id}',[CourseController::class, 'training']);
-//Posts Page 
-Route::get('/allposts',[PostsController::class,'index']);
-Route::get('/post/{id}',[PostsController::class,'show']);
+
+Route::apiResource('course' , CourseController::class);
+Route::apiResource('category' , CourseController::class);
+Route::apiResource('post' , CourseController::class);
+Route::apiResource('teacher' , CourseController::class);
+Route::get('best-discount' , [\App\Http\Controllers\DiscountController::class , 'show']);

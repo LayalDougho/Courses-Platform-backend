@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('teacher_id')->references('id')->on('teachers');
+            $table->foreignId('discount_id')->nullable()->references('id')->on('discounts')->noActionOnDelete();
+
             $table->string('title');
             $table->longText('description');
             $table->string('duration');
             $table->integer('price');
-            $table->string('discount');
             $table->json('what_you_will_learn');
             $table->json('course_content');
             $table->json('training_program');
-            $table->string('discount_duraion');
             $table->foreignId('teacher_id')->references('id')->on('teachers');
             $table->timestamps();
         });

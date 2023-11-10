@@ -11,22 +11,18 @@ class TeacherController extends Controller
 {
     public function index(): JsonResponse
     {
-        $teachers = Teacher::with('courses')->get();
+        $teachers = Teacher::all();
 
         return $this->successResponse(data: TeacherResource::collection($teachers));
     }
-    
-    public function teacher($id): JsonResponse
+
+    public function show($id): JsonResponse
     {
-        $teachers = Teacher::with('courses')->find($id);
+        $teachers = Teacher::find($id)->with('courses')->get();
         if($teachers!=null){
             return $this->successResponse(data: $teachers);
         }else{
             return $this->failedResponse(message:'No teacher founded');
         }
-    }
-    public function show(Teacher $teacher): JsonResponse
-    {
-        return $this->successResponse(data: TeacherResource::make($teacher));
     }
 }

@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with(['category' , 'tag'])->get();
+        $posts = Post::where('category_id' , $request->category_id)->with(['tags'])->paginate();
         return $this->successResponse(data: PostResource::collection($posts));
     }
 

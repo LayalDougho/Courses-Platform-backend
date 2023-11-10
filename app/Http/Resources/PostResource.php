@@ -19,7 +19,6 @@ class PostResource extends JsonResource
           'content' => $this->content,
           'image' => $this->image,
           'read_time' => $this->read_time,
-          'category' => CategoryResource::collection($this->category),
           'tag' => TagResource::collection($this->tag),
         ];
     }

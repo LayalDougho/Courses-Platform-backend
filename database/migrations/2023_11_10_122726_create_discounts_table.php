@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('general__discounts', function (Blueprint $table) {
+        Schema::create('discounts', function (Blueprint $table) {
             $table->id();
-            $table->integer('discount')->default(0);
-            $table->integer('days')->default(0);
+            $table->tinyInteger('discount_percent')->default(0);
+            $table->dateTime('time_expired')->default(\Illuminate\Support\Carbon::tomorrow());
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('general__discounts');
+        Schema::dropIfExists('discounts');
     }
 };
