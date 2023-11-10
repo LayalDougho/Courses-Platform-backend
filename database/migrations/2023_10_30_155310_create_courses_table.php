@@ -20,11 +20,19 @@ return new class extends Migration
             $table->longText('description');
             $table->string('duration');
             $table->integer('price');
-            $table->json('what_you_will_learn');
-            $table->json('course_content');
-            $table->json('training_program');
-            $table->foreignId('teacher_id')->references('id')->on('teachers');
-            $table->timestamps();
+//<<<<<<< HEAD
+//            $table->tinyInteger('discount');
+//            $table->string('what_you_will_learn');
+//            $table->json('course_content');
+//            $table->json('training_program');
+//            $table->dateTime('discount_duration');
+//=======
+//            $table->json('what_you_will_learn');
+//            $table->json('course_content');
+//            $table->json('training_program');
+//>>>>>>> ac2016ac512fcf207701dc6ccc8f86ff4c2ba15e
+//            $table->foreignId('teacher_id')->references('id')->on('teachers');
+//            $table->timestamps();
         });
     }
 

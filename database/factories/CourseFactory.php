@@ -20,14 +20,23 @@ class CourseFactory extends Factory
         return [
             //
             'title' => $this->faker->title(),
-              'description' => $this->faker->paragraph(2), 
-              'duration' => $this->faker->sentence(), 
+              'description' => $this->faker->paragraph(2),
+              'duration' => $this->faker->sentence(),
               'price' => $this->faker->randomNumber(),
-              'discount' => $this->faker->word() ,
+              'discount' => $this->faker->numberBetween(0 , 100) ,
               'what_you_will_learn' => $this->faker->sentence() ,
-              'discount_duraion' => $this->faker->sentence() ,
-              'course_content' => $this->faker->sentence() ,
-              'training_program' => $this->faker->sentence() ,
+              'discount_duration' => $this->faker->dateTime(),
+              'course_content' => json_encode ([
+                  $this->faker->sentence(),
+                  $this->faker->sentence(),
+                  $this->faker->sentence(),
+                  $this->faker->sentence(),
+              ]),
+              'training_program' => json_encode( [
+                   $this->faker->word() => $this->faker->sentence(),
+                  $this->faker->word() => $this->faker->sentence(),
+                  $this->faker->word() => $this->faker->sentence(),
+              ] ),
               'teacher_id' => Teacher::factory(),
         ];
     }
