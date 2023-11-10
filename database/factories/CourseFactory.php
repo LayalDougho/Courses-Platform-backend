@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Discount;
 use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -37,7 +38,8 @@ class CourseFactory extends Factory
                   $this->faker->word() => $this->faker->sentence(),
               ] ),
               'teacher_id' => Teacher::factory(),
-              'discount_id' => Discount::factory()
+              'discount_id' => Discount::factory(),
+              'category_id' => Category::inRandomOrder()->first(),
         ];
     }
 }

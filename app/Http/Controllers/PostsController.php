@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PostResource;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,12 @@ class PostsController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::where('category_id' , $request->category_id)->with(['tags'])->paginate();
+        if ($request->category_id == null){
+            $posts = Post::with('tags')->paginate();
+        }else{
+            $posts = Post::where('category_id' , $request->category_id)->with('tags')->paginate();
+        }
+
         return $this->successResponse(data: PostResource::collection($posts));
     }
 
@@ -19,7 +25,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::with(['title','content','image', 'reading_time'])->find($id);
+        $post = Post::where('id' , $id)->with('tags')->first();
         if($post!=null){
             return $this->successResponse(data: $post);
         }else{

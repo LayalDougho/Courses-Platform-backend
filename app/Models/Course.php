@@ -11,22 +11,32 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Course extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'description', 'duration', 'price', 'discount', 'what_you_will_learn', 'training_program' , 'discount_duration' ,'teacher_id'];
 
-    public function teachers(): HasMany
+    protected $fillable = [
+        'teacher_id',
+        'discount_id',
+        'title',
+        'description',
+        'duration',
+        'price',
+        'what_you_will_learn' ,
+        'course_content' ,
+        'training_program'
+    ];
+
+    public function teachers(): BelongsTo
     {
-        return $this->hasMany(Teacher::class, 'teacher_id');
+        return $this->belongsTo(Teacher::class ,'teacher_id');
     }
 
     public function projects(): HasMany
     {
-        return $this->hasMany(Project::class, 'course_id');
+        return $this->hasMany(Project::class , 'course_id');
     }
 
-
-    public function programmes(): BelongsToMany
+    public function programmes()
     {
-    return $this->belongsToMany(Program::class, 'course_id', 'program_id');
-}
+      return $this->belongsToMany(Program::class , 'course_program' , 'program_id' , 'course_id');
+    }
 
 }

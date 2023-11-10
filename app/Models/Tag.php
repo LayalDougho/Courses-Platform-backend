@@ -11,9 +11,9 @@ class Tag extends Model
     use HasFactory;
     protected $fillable = ['name'];
 
-    public function posts() : BelongsToMany
+    public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->belongsToMany(Post::class, 'tag_id', 'post_id');
+        return $this->hasMany(PostTags::class);
     }
- 
+
 }

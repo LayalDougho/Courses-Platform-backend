@@ -14,4 +14,9 @@ class PostTags extends Pivot
         'tag_id',
         'post_id',
     ];
+
+    public function posts(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }

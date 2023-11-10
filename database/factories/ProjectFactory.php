@@ -19,7 +19,7 @@ class ProjectFactory extends Factory
     {
         return [
             'subject' => $this->faker->word(),
-            'image' => $this->faker->image(),
+            'image' => $this->faker->imageUrl(),
             'course_id' =>   DB::table('courses')->inRandomOrder()->first()->id,
         ];
     }

@@ -15,6 +15,7 @@ class CourseResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+          'id' => $this->id,
           'title' => $this->title,
           'description' => $this->description,
           'duration' => $this->duration,
@@ -24,9 +25,14 @@ class CourseResource extends JsonResource
           'training_program' => $this->training_program,
           'discount_duration' => $this->discount_duration,
 
-          'teachers' => $this->whenLoaded('teachers' , fn() => TeacherResource::collection($this->teachers)) ,
-          'projects' => $this->whenLoaded('projects' , fn() => ProjectResource::collection($this->projects)) ,
-          'programmes' => $this->whenLoaded('teachers' , fn() => ProgramResource::collection($this->programmes))  ,
+//          'teachers' => TeacherResource::collection($this->teachers),
+//          'projects' => ProjectResource::collection($this->projects) ,
+//          'programmes' => ProgramResource::collection($this->programmes),
+
+
+            'teachers' => $this->teachers,
+            'projects' => $this->projects ,
+            'programmes' => $this->programmes  ,
         ];
     }
 }

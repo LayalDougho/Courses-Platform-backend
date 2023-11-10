@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
@@ -22,8 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Route::get('course/{course}' , [CourseController::class , 'show']);
 Route::apiResource('course' , CourseController::class);
-Route::apiResource('category' , CourseController::class);
-Route::apiResource('post' , CourseController::class);
-Route::apiResource('teacher' , CourseController::class);
+Route::apiResource('category' , CategoryController::class);
+Route::apiResource('post' , PostsController::class);
+Route::apiResource('teacher' , TeacherController::class);
 Route::get('best-discount' , [\App\Http\Controllers\DiscountController::class , 'show']);

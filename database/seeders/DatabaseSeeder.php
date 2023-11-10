@@ -33,17 +33,17 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Course::factory(10)->create();
+
 
         $this->call(CategorySeeder::class);
         $this->call(PostSeeder::class);
         $this->call(TagSeeder::class);
-        $this->call(TeacherSeeder::class);
         $this->call(ProgramSeeder::class);
         $this->call(CourseSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(ProjectSeeder::class);
 
+        Course::factory(10)->create();
         PostTags::factory(5)->create();
         CourseProgram::factory(25)->create();
 

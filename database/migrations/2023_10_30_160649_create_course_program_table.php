@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('course_program', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('course_id')->references('id')->on('courses');
             $table->foreignId('program_id')->references('id')->on('programs');
-            $table->timestamps();
         });
     }
 
