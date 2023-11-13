@@ -29,7 +29,7 @@ class CourseController extends Controller
      */
     public function show(string $id): \Illuminate\Http\JsonResponse
     {
-        $course = Course::where('id' , $id)->with(['programmes' , 'teachers' , 'projects'])->first();
+        $course = Course::where('id' , $id)->with(['programs' , 'teachers' , 'projects'])->first();
 
 
         return $this->successResponse(data: CourseResource::make($course), message: 'success');
